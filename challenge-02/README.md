@@ -22,10 +22,11 @@ Crie uma função que adicione um valor à variável criada acima, e retorne a s
     O valor da variável agora é VALOR.
 Onde VALOR é o novo valor da variável.
 */
-function adiciona(valor){
+function adiciona(){
     valor = 'o valor da variavel agora é ' + valor;
     return valor;
 }
+
 
 // Invoque a função criada acima.
 adiciona(20);
