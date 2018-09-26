@@ -204,5 +204,49 @@
     Repita o PASSO 2 novamente, mas passando um operador inválido, para ver se
     a mensagem de erro será mostrada no console.
     */
+  operationSignal = 'ˆ';
+    var substraction = calculator(operationSignal);
+
+    if(substraction !== false){
+        n1 = 67;
+        n2 = 40;
+        console.log(showOperationMessage( operationSignal, n1, n2), substraction( n1, n2));
+    }else{
+        console.log(showErrorMessage(operationSignal));
+    }
+
+    operationSignal ='"';
+    var multiplication = calculator(operationSignal);
+
+    if(substraction !== false){
+        n1 = 9;
+        n2 = 3;
+        console.log(showOperationMessage( operationSignal, n1, n2), multiplication( n1, n2));
+    }else{
+        console.log(showErrorMessage(operationSignal));
+    }
+
+    operationSignal = '$';
+    var division = calculator(operationSignal);
+    
+    if(division !== false){
+        n1 = 32;
+        n2 = 2;
+        console.log(showOperationMessage( operationSignal, n1, n2), division( n1, n2));
+    }else{
+        console.log(showErrorMessage(operationSignal));
+    }
+
+    operationSignal = '#';
+    var mod = calculator(operationSignal);
+    
+    if(mod !== false){
+        n1 = 30;
+        n2 = 2;
+        console.log(showOperationMessage( operationSignal, n1, n2), mod( n1, n2));
+    }else{
+        console.log(showErrorMessage(operationSignal));
+    }
+    
     
 }());
