@@ -22,13 +22,15 @@
     adicionados à idade original (age). Esse método deverá retornar o objeto
     que será instanciado.
   */
+  
   function Person (name, lastName, age){
     this.name = name,
-    this.lastName = lastName,
-    this.age = age
+    this.lastName = lastName, 
+    this.age = age,
+    this.nascimento = nascimento,
 
     this.getFullName  = function getFullName(){
-      return this.name + '' + this.lastName;
+      return this.name + ' ' + this.lastName;
     };
 
     this.getAge = function getAge(){
@@ -36,10 +38,11 @@
     };
 
     this.addAge = function addAge(){
-      this.age += arguments[0];
-      return this;//objeto a ser instanciado, o person
+      this.age += arguments[0]; //tudo o que ele mais a quantidade anos passados
+      //como nao tem parametro, arguments[0] pega o primeiro elemento é um array light
+      //nao é um array, é um objeto de array, nao tem metodos e propriedades de um array de verdade
+      return this; //objeto a ser instanciado, para o person 
     };
-
   };
 
   /*
@@ -48,7 +51,9 @@
   parâmetros corretamente para o construtor para criar as novas pessoas.
   Mostre as 3 novas pessoas criadas no console (Um console.log por pessoa).
   */
+
   console.log( 'Novas pessoas criadas à partir de Person:' );
+
   var raira = new Person('Raira', 'Izabel' , 23);
   console.log(raira);
 
@@ -61,7 +66,9 @@
   /*
   Mostre no console o nome completo de cada pessoa.
   */
+
   console.log( '\nNomes das pessoas:' );
+
   console.log(raira.getFullName());
   console.log(anne.getFullName());
   console.log(lidiane.getFullName());
@@ -70,19 +77,21 @@
   Mostre no console as idades de cada pessoa, com a frase:
   - "[NOME COMPLETO] tem [IDADE] anos."
   */
+
   console.log( '\nIdade das pessoas:' );
-  console.log(raira.getFullName()+ ' tem'  +raira.getAge()+ ' anos.');
-  console.log(anne.getFullName()+ ' tem'  +anne.getAge()+ ' anos.');
-  console.log(lidiane.getFullName()+ ' tem'  +lidiane.getAge()+ ' anos.');
+  console.log(raira.getFullName()+ ' tem '  +raira.getAge()+ ' anos.');
+  console.log(anne.getFullName()+ ' tem '  +anne.getAge()+ ' anos.');
+  console.log(lidiane.getFullName()+ ' tem '  +lidiane.getAge()+ ' anos.');
 
   /*
   Adicione alguns anos à cada pessoa, e mostre no console a nova idade de
   cada um. A frase deverá ser no formato:
   - "[NOME COMPLETO] agora tem [NOVA IDADE] anos."
   */
+
   console.log( '\nNova idade das pessoas:' );
-  console.log(raira.getFullName() + ' agora tem' +raira.addAge(5).getAge()+ ' anos .');
-  console.log(anne.getFullName() + ' agora tem' +anne.addAge(7).getAge()+ ' anos .');
-  console.log(lidiane.getFullName() + ' agora tem' +lidiane.addAge(2).getAge()+ ' anos .');
+  console.log(raira.getFullName() + ' agora tem ' +raira.addAge(5).getAge()+ ' anos .');
+  console.log(anne.getFullName() + ' agora tem ' +anne.addAge(7).getAge()+ ' anos .');
+  console.log(lidiane.getFullName() + ' agora tem ' +lidiane.addAge(2).getAge()+ ' anos .');
 
 })();
