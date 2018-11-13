@@ -121,4 +121,3 @@
     console.log(text.replace(regxDate, replaceDate));
 })();
 
-//regex = mais usado para manipular os strings!!
