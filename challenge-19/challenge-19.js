@@ -1,4 +1,5 @@
 (function(){
+    'use strict';
     /*
     1. Envolva todo o conteúdo desse desafio em uma IIFE.
     2. Adicione a diretiva 'use strict';
@@ -25,7 +26,8 @@
     no console:
     */
     console.log( 'Regex para números usando o construtor:' );
-    // ?
+    var justNumbersRegex = new RegExp( '^\\d+' , 'gm' );
+    console.log(justNumbersRegex);
 
     /*
     Verifique se a regex acima casa com o texto na variável `text`, mostrando o
@@ -34,7 +36,7 @@
     */
     var text = '10 anos.\n50 discos vendidos.\nE nem 10% dos meus amigos o conhece.';
     console.log( '\nNúmeros no início da linha do texto:\n' + text, '\n' );
-    // ?
+    console.log(text.match(justNumbersRegex));
 
     /*
     - Crie uma regex que case com números no final de uma string. Atribua a
@@ -44,8 +46,9 @@
     linha, independente de quantos caracteres de número estiverem juntos.
     Mostre a regex no console:
     */
-    console.log( '\nRegex para números somente no final das linhas:' );
-    // ?
+    console.log( '\nRegex para números somente no final das linhas:' ); //BOA PRATICA DE PROGRAMACAO = USAR O LITERAL, da preferencia a usar sempre o literal. So se pedir eu uso o construtor
+    var numbersAtTheEnd = /\d+$/gm;
+    console.log(numbersAtTheEnd);
 
     /*
     Verifique se a regex acima casa com o texto na variável `otherText`,
@@ -55,7 +58,7 @@
     */
     var otherText = 'Silvio Santos, nome artístico de Senor Abravanel (Rio de Janeiro, 12\n de dezembro de 1930), é um apresentador de televisão e empresário brasileiro.\n Proprietário do Grupo Silvio Santos, que inclui empresas como a Liderança\n Capitalização (administradora da loteria Tele Sena), a Jequiti Cosméticos e o\n Sistema Brasileiro de Televisão (mais conhecido como SBT), Silvio Santos possui\n um patrimônio avaliado em aproximadamente 6\n bilhões de reais.';
     console.log( '\nNúmeros no final da linha:\n\n', otherText, '\n' );
-    // ?
+    console.log(otherText.match(numbersAtTheEnd));
 
     /*
     Vamos criar um método que vai testar se uma classe CSS existe em uma
@@ -82,6 +85,43 @@
     */
     var markup = '<main>\n  <div class="container">\n    <span class="text date"></span>\n    <p class=\'excerpt\'></p>\n  </div>\n</main>';
     console.log( '\nQuais classes CSS existem na marcação abaixo?\n\n', markup, '\n' );
-    // ?
+
+    function hasClasss(markup, cssClass){
+        var regex = new RegExp('class=["\'](?:[\\w\\s]+)?' +cssClass+ '(?:[\\w\\s]+)?["\']'); //quando eu encontrar a palavra class, seguida de uma "" ou '' ,seguida de um espaço ou nao, da classe,  e fechando com uma '' ou "" tendo espaço ou nao 
+        return regex.test( markup ); //se a classe existir, retorna true se nao retorna false
+        //ou podia ser na var regex = new RegExp('class=["\'].*' +cssClass+ '.*["\']');
+    }
+
+    var classes = ['container', 'text', 'date', 'excerpt', 'main']; 
+    classes.forEach(function(cssClass){ //class é palavra reservada do js
+        console.log( hasClass( markup, cssClass )+ ' para a classe ' +cssClass);            
+    });
     
 })();
+
+/* PRA LEMBRAR
+
+^ ---> início de string, exemplo: ^<p> se começa com a tag <p>
+$ ---> fim de string, exemplo: >$ se a string termina com esse sinal de >
+Exemplo: (^<).+(>$), se a string começa com '<' e se termina com '>'
+
+flag m ---> multiline, cada linha vai ser uma string que ele vai casar com todas as linhas
+
+? ---> repetição nao gulosa (se usados após repetidores), um ou zero caracterer após ele
+(?:) ---> somente agrupamento ,sem capturar
+
+\1, \2 ---> referencia dentro da regex
+
+METODOS DE STRING QUE PODE USAR A REGEX
+.match(regexp)
+.replace(regexp, string) ---> o segundo parametro pode ser uma função
+.split(regexp)
+.search(regexp) ---> busca na string
+
+METODOS DE REGEX
+.test(string) ---> verifica se o cara exsite, é parecido com .match
+.exec(string) ---> faz o casamento a cada vez que ele é executado até nao ter mais referencias e retornar null
+Escapar aspas em strings com \
+
+
+*/
