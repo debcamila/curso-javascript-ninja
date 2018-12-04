@@ -15,7 +15,7 @@ Tente aplicar na prática alguns dos eventos que estão ali e coloque nesse
 desafio os experimentos legais que você conseguir desenvolver :D
 */
 
-/* T E S T E, refazer depois */
+/* T E S T E */
 (function(){
     'use strict';
 
@@ -62,13 +62,17 @@ desafio os experimentos legais que você conseguir desenvolver :D
     });
 
     var $a = document.querySelector('[data-js="link"]');
+
     var $div = document.querySelector('[data-js="div"]')
         .addEventListener('click', function(event){
             alert('clicou na div');
         }, false);
+
     $a.addEventListener('click', function(event){
         event.preventDefault();
         alert('clicou no link');
     }, false);
-
 });
+
+
+
