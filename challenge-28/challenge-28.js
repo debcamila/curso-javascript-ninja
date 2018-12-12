@@ -29,97 +29,19 @@
 (function(win, doc){
   'use strict';
 
-  function DOM(elements){
-        this.element = document.querySelectorAll(elements);
+    function app(){
+      var $formCep = new DOM('[data-js="form-cep"]');
+      var $inputCep = new DOM('[data-js="input-cep"]');
+      var $logradouro = new DOM('[data-js="logradouro"]');
+      var $bairro = new DOM('[data-js="bairro"]');
+      var $estado = new DOM('[data-js="estado"]');
+      var $cidade = new DOM('[data-js="cidade"]');
+      var $cep = new DOM('[data-js="cep"]');
+      var $status = new DOM('[data-js="status"]');
+      var ajax = new XMLHttpRequest();
+      $formCep.on('submit', handleSubmitFormCep);
 
-    }
-
-    DOM.prototype.on = function on(eventType, callBack){
-        Array.prototype.forEach.call(this.element, function(element){
-        element.addEventListener(eventType, callBack, false);
-        });    
-    };
-
-    DOM.prototype.off = function off(eventType, callBack){
-        Array.prototype.forEach.call(this.element, function(element){
-        element.removeEventListener(eventType, callBack, false);
-        });
-    };
-
-
-    DOM.prototype.get = function get(){
-        return this.element;
-    };
-
-    DOM.prototype.forEach = function forEach(){
-        return Array.prototype.forEach.apply(this.element, arguments);
-    };
-
-    DOM.prototype.map = function map(){
-        return Array.prototype.map.apply(this.element, arguments);
-    };
-
-    DOM.prototype.filter = function filter(){
-        return Array.prototype.filter.apply(this.element, arguments);
-    };
-
-    DOM.prototype.reduce = function reduce(){
-        return Array.prototype.reduce.apply(this.element, arguments);
-    };
-
-    DOM.prototype.reduceRight = function reduceRight(){
-        return Array.prototype.reduceRight.apply(this.element, arguments);
-    };
-
-    DOM.prototype.every = function every(){
-        return Array.prototype.every.apply(this.element, arguments);
-    };
-
-    DOM.prototype.some = function some(){
-        return Array.prototype.some.apply(this.element, arguments);
-    };
-
-    DOM.prototype.isArray = function isArray(parametro){
-        return Object.prototype.toString.call(parametro) === '[object Array]';
-    };
-
-    DOM.prototype.isObject = function isObject(parametro){
-        return Object.prototype.toString.call(parametro) === '[object Object]';
-    };
-
-    DOM.prototype.isFunction = function isFunction(parametro){
-        return Object.prototype.toString.call(parametro) === '[object Function]';
-    };
-
-    DOM.prototype.isNumber = function isNumber(parametro){
-        return Object.prototype.toString.call(parametro) === '[object Number]';
-    };
-
-    DOM.prototype.isString = function isString(parametro){
-        return Object.prototype.toString.call(parametro) === '[object String]';
-    };
-
-    DOM.prototype.isBoolean = function isBoolean(parametro){
-        return Object.prototype.toString.call(parametro) === '[object Boolean]';
-    };
-
-    DOM.prototype.isNull = function isNull(parametro){
-        return Object.prototype.toString.call(parametro) === '[object Null]' || Object.prototype.toString.call(parametro) === '[object Underfined]';
-    };
-
-    var $formCep = new DOM('[data-js="form-cep"]');
-    var $inputCep = new DOM('[data-js="input-cep"]');
-    var $logradouro = new DOM('[data-js="logradouro"]');
-    var $bairro = new DOM('[data-js="bairro"]');
-    var $estado = new DOM('[data-js="estado"]');
-    var $cidade = new DOM('[data-js="cidade"]');
-    var $cep = new DOM('[data-js="cep"]');
-    var $status = new DOM('[data-js="status"]');
-    var ajax = new XMLHttpRequest();
-    $formCep.on('submit', handleSubmitFormCep);
-
-
-    function handleSubmitFormCep(event){
+      function handleSubmitFormCep(event){
       event.preventDefault();
       var url = getUrl();
       ajax.open('GET', url);
@@ -196,6 +118,9 @@
       return message.replace('[CEP]', cep);
     }
 
+  }
+
+    app();
 })();
 
 
